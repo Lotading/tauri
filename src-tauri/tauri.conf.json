@@ -20,9 +20,8 @@
       "windows": {
         "webviewInstallMode": {
           "type": "offlineInstaller"
-        },
-
-      }
+        }
+      },
       "deb": {
         "depends": []
       },
@@ -34,7 +33,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "net.lotading",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -56,11 +55,7 @@
       "csp": null
     },
     "updater": {
-      "active": true 
-      "endpoints": [
-          "https://github.com/lotading/tauri/"
-        ]
-      "pubkey": "~/.tauri/myapp.key.pub"
+      "active": false 
     },
     "windows": [
       {
