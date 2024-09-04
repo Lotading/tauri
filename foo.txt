@@ -1,0 +1,39 @@
+ii  gir1.2-atk-1.0:amd64                 2.36.0-3build1                          amd64        ATK accessibility toolkit (GObject introspection)
+ii  gir1.2-gdkpixbuf-2.0:amd64           2.42.8+dfsg-1ubuntu0.3                  amd64        GDK Pixbuf library - GObject-Introspection
+ii  gir1.2-gtk-3.0:amd64                 3.24.33-1ubuntu2.2                      amd64        GTK graphical user interface library -- gir bindings
+ii  gir1.2-javascriptcoregtk-4.0:amd64   2.44.2-0ubuntu0.22.04.1                 amd64        JavaScript engine library from WebKitGTK - GObject introspection data
+ii  gir1.2-pango-1.0:amd64               1.50.6+ds-2ubuntu1                      amd64        Layout and rendering of internationalized text - gir bindings
+ii  gtk-update-icon-cache                3.24.33-1ubuntu2.2                      amd64        icon theme caching utility
+ii  libatk-bridge2.0-0:amd64             2.38.0-3                                amd64        AT-SPI 2 toolkit bridge - shared library
+ii  libatk-bridge2.0-dev:amd64           2.38.0-3                                amd64        Development files for the AT-SPI 2 toolkit bridge
+ii  libatk1.0-0:amd64                    2.36.0-3build1                          amd64        ATK accessibility toolkit
+ii  libatk1.0-data                       2.36.0-3build1                          all          Common files for the ATK accessibility toolkit
+ii  libatk1.0-dev:amd64                  2.36.0-3build1                          amd64        Development files for the ATK accessibility toolkit
+ii  libcairo-gobject2:amd64              1.16.0-5ubuntu2                         amd64        Cairo 2D vector graphics library (GObject library)
+ii  libcairo-script-interpreter2:amd64   1.16.0-5ubuntu2                         amd64        Cairo 2D vector graphics library (script interpreter)
+ii  libcairo2:amd64                      1.16.0-5ubuntu2                         amd64        Cairo 2D vector graphics library
+ii  libcairo2-dev:amd64                  1.16.0-5ubuntu2                         amd64        Development files for the Cairo 2D graphics library
+ii  libdbusmenu-gtk3-4:amd64             16.04.1+18.10.20180917-0ubuntu8         amd64        library for passing menus over DBus - GTK+ version
+ii  libdecor-0-plugin-1-cairo:amd64      0.1.0-3build1                           amd64        default decoration plugin
+ii  libgdk-pixbuf-2.0-0:amd64            2.42.8+dfsg-1ubuntu0.3                  amd64        GDK Pixbuf library
+ii  libgdk-pixbuf-2.0-dev:amd64          2.42.8+dfsg-1ubuntu0.3                  amd64        GDK Pixbuf library (development files)
+ii  libgdk-pixbuf2.0-bin                 2.42.8+dfsg-1ubuntu0.3                  amd64        GDK Pixbuf library (thumbnailer)
+ii  libgdk-pixbuf2.0-common              2.42.8+dfsg-1ubuntu0.3                  all          GDK Pixbuf library - data files
+ii  libgtk-3-0:amd64                     3.24.33-1ubuntu2.2                      amd64        GTK graphical user interface library
+ii  libgtk-3-bin                         3.24.33-1ubuntu2.2                      amd64        programs for the GTK graphical user interface library
+ii  libgtk-3-common                      3.24.33-1ubuntu2.2                      all          common files for the GTK graphical user interface library
+ii  libgtk-3-dev:amd64                   3.24.33-1ubuntu2.2                      amd64        development files for the GTK library
+ii  libjavascriptcoregtk-4.0-18:amd64    2.44.2-0ubuntu0.22.04.1                 amd64        JavaScript engine library from WebKitGTK
+ii  libjavascriptcoregtk-4.0-dev:amd64   2.44.2-0ubuntu0.22.04.1                 amd64        JavaScript engine library from WebKitGTK - development files
+ii  libpango-1.0-0:amd64                 1.50.6+ds-2ubuntu1                      amd64        Layout and rendering of internationalized text
+ii  libpango1.0-dev:amd64                1.50.6+ds-2ubuntu1                      amd64        Development files for the Pango
+ii  libpangocairo-1.0-0:amd64            1.50.6+ds-2ubuntu1                      amd64        Layout and rendering of internationalized text
+ii  libpangoft2-1.0-0:amd64              1.50.6+ds-2ubuntu1                      amd64        Layout and rendering of internationalized text
+ii  libpangoxft-1.0-0:amd64              1.50.6+ds-2ubuntu1                      amd64        Layout and rendering of internationalized text
+ii  libpixman-1-0:amd64                  0.40.0-1ubuntu0.22.04.1                 amd64        pixel-manipulation library for X and cairo
+ii  libpixman-1-dev:amd64                0.40.0-1ubuntu0.22.04.1                 amd64        pixel-manipulation library for X and cairo (development files)
+ii  libwebkit2gtk-4.0-37:amd64           2.44.2-0ubuntu0.22.04.1                 amd64        Web content engine library for GTK
+ii  libwebkit2gtk-4.0-dev:amd64          2.44.2-0ubuntu0.22.04.1                 amd64        Web content engine library for GTK - development files
+ii  pango1.0-tools                       1.50.6+ds-2ubuntu1                      amd64        Development utilities for Pango
+ii  shared-mime-info                     2.1-2                                   amd64        FreeDesktop.org shared MIME database and spec
+ii  xdg-desktop-portal-gtk               1.14.0-1build1                          amd64        GTK+/GNOME portal backend for xdg-desktop-portal
