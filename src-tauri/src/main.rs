@@ -1,8 +1,44 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+use std::net::SocketAddr;
+
+use axum::{http::Method, response::IntoResponse, routing::get, Router};
+use tower_http::cors::{Any, CorsLayer};
+
+struct Port(u16);
+
+#[tauri::command]
+fn get_port(port: tauri::State<Port>) -> Result<String, String> {
+    Ok(format!("{}", port.0))
+}
+
 fn main() {
-  tauri::Builder::default()
-    .run(tauri::generate_context!())
-    .expect("error while running tauri application");
+    let port = portpicker::pick_unused_port().expect("failed to find unused port");
+    tauri::async_runtime::spawn(app(port));
+    tauri::Builder::default()
+        .manage(Port(port))
+        .invoke_handler(tauri::generate_handler![get_port])
+        .run(tauri::generate_context!())
+        .expect("error while running tauri application");
+}
+
+async fn app(port: u16) {
+    let app = Router::new().route("/", get(handler)).layer(
+        CorsLayer::new().allow_origin(Any).allow_methods(vec![
+            Method::POST,
+            Method::GET,
+            Method::PATCH,
+        ]),
+    );
+    let addr = SocketAddr::from(([127, 0, 0, 1], port));
+    println!("Backend on: http://{}", addr);
+    axum::Server::bind(&addr)
+        .serve(app.into_make_service())
+        .await
+        .unwrap();
+}
+
+async fn handler() -> impl IntoResponse {
+    "hello world this route is: /"
 }
