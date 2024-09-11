@@ -3,6 +3,8 @@
 
 use std::net::SocketAddr;
 
+mod orm;
+
 use axum::{http::Method, response::IntoResponse, routing::get, Router};
 use tower_http::cors::{Any, CorsLayer};
 
