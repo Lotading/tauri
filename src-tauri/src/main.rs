@@ -15,6 +15,7 @@ fn get_port(port: tauri::State<Port>) -> Result<String, String> {
 
 fn main() {
     let port = portpicker::pick_unused_port().expect("failed to find unused port");
+    println!("PORT: {}",port);
     tauri::async_runtime::spawn(app(port));
     tauri::Builder::default()
         .manage(Port(port))

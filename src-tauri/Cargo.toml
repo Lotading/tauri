@@ -22,6 +22,7 @@ tokio = "1.29.1"
 axum = "0.6.18"
 portpicker = "0.1.1"
 tower-http = { version = "0.4.4", features = ["cors"]}
+diesel = "2.0.4"
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem and the built-in dev server is disabled.
