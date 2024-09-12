@@ -1,8 +1,13 @@
 // place files you want to import through the `$lib` alias in this folder.
 import { fetch } from "@tauri-apps/api/http";
+import { invoke } from "@tauri-apps/api";
 
-const response = await fetch("http://test.tauri.app/data.json", {
-  method: 'GET',
-});
-
-console.log(response.status)
+const testconn = async () => {
+  try {
+    const port = await invoke('get_port')
+    const response = await fetch(`http://localhost:${port}/`)
+    console.log(response)
+  } catch (error){
+    console.error(error)
+  }
+}
