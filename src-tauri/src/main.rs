@@ -3,8 +3,11 @@
 
 use std::net::SocketAddr;
 
-mod orm;
+mod db;
 
+mod schema;
+
+use axum::routing::post;
 use axum::{http::Method, response::IntoResponse, routing::get, Router};
 use tower_http::cors::{Any, CorsLayer};
 
@@ -17,7 +20,7 @@ fn get_port(port: tauri::State<Port>) -> Result<String, String> {
 
 fn main() {
     let port = portpicker::pick_unused_port().expect("failed to find unused port");
-    println!("PORT: {}",port);
+    println!("PORT: {}", port);
     tauri::async_runtime::spawn(app(port));
     tauri::Builder::default()
         .manage(Port(port))
@@ -27,21 +30,31 @@ fn main() {
 }
 
 async fn app(port: u16) {
-    let app = Router::new().route("/", get(handler)).layer(
-        CorsLayer::new().allow_origin(Any).allow_methods(vec![
+    let app = Router::new()
+        .route("/", get(handler))
+        .route("/login", post(login))
+        .route("/users", get(users))
+        .layer(CorsLayer::new().allow_origin(Any).allow_methods(vec![
             Method::POST,
             Method::GET,
             Method::PATCH,
-        ]),
-    );
+        ]));
     let addr = SocketAddr::from(([127, 0, 0, 1], port));
     println!("Backend on: http://{}", addr);
-    axum::Server::bind(&addr)
-        .serve(app.into_make_service())
+    let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
+    axum::serve(listener, app.into_make_service())
         .await
-        .unwrap();
+        .unwrap()
 }
 
 async fn handler() -> impl IntoResponse {
     "hello world this route is: /"
+}
+
+async fn login() -> impl IntoResponse {
+    todo!()
+}
+
+async fn users() -> impl IntoResponse {
+    todo!()
 }
