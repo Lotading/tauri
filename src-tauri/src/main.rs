@@ -6,10 +6,12 @@ use std::net::SocketAddr;
 mod db;
 mod schema;
 
+use crate::db::models::{NewPost, Post};
 use axum::routing::post;
+use axum::Json;
 use axum::{http::Method, response::IntoResponse, routing::get, Router};
 use db::db::establish_connection;
-use crate::db::models::{Post,NewPost};
+use diesel::sql_types::Json;
 use tower_http::cors::{Any, CorsLayer};
 
 struct Port(u16);
@@ -33,10 +35,11 @@ fn main() {
 async fn app(port: u16) {
     let _conn = &mut establish_connection();
     let app = Router::new()
-        .route("/", get(handler))
+        .route("/", get(root))
         .route("/login", post(login))
-        .route("/posts", get(users))
-        .route("/createposts",post(createpost))
+        .route("/posts", get(posts))
+        .route("/createposts", 
+            post(createpost))
         .layer(CorsLayer::new().allow_origin(Any).allow_methods(vec![
             Method::POST,
             Method::GET,
@@ -50,7 +53,7 @@ async fn app(port: u16) {
         .unwrap()
 }
 
-async fn handler() -> impl IntoResponse {
+async fn root() -> impl IntoResponse {
     "hello world this route is: /"
 }
 
@@ -58,10 +61,16 @@ async fn login() -> impl IntoResponse {
     todo!()
 }
 
-async fn users() -> impl IntoResponse {
+async fn posts() -> impl IntoResponse {
     todo!()
 }
 
-async fn createpost() -> IntoResponse {
-    todo!()
+async fn createpost(Json(payload): Json<NewPost<'_>>) -> impl IntoResponse {
+    let post = Post {
+        id: 0,
+        title: payload.title.into(),
+        body: payload.body.into(),
+        published: true,
+    };
+    Json(post)
 }
