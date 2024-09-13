@@ -4,11 +4,12 @@
 use std::net::SocketAddr;
 
 mod db;
-
 mod schema;
 
 use axum::routing::post;
 use axum::{http::Method, response::IntoResponse, routing::get, Router};
+use db::db::establish_connection;
+use crate::db::models::{Post,NewPost};
 use tower_http::cors::{Any, CorsLayer};
 
 struct Port(u16);
@@ -30,10 +31,12 @@ fn main() {
 }
 
 async fn app(port: u16) {
+    let _conn = &mut establish_connection();
     let app = Router::new()
         .route("/", get(handler))
         .route("/login", post(login))
-        .route("/users", get(users))
+        .route("/posts", get(users))
+        .route("/createposts",post(createpost))
         .layer(CorsLayer::new().allow_origin(Any).allow_methods(vec![
             Method::POST,
             Method::GET,
@@ -56,5 +59,9 @@ async fn login() -> impl IntoResponse {
 }
 
 async fn users() -> impl IntoResponse {
+    todo!()
+}
+
+async fn createpost() -> IntoResponse {
     todo!()
 }
