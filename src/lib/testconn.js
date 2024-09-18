@@ -5,10 +5,14 @@ export const testconn = async () => {
   try {
     const port = await invoke('get_port')
     const response = await fetch(`http://localhost:${port}/`)
-    console.log(response)
+    return response
   } catch (error){
     console.error(error)
+    return error;
   }
 }
 
-testconn();
+export const get_port = () => {
+  let port = invoke('get_port');
+  return port;
+}

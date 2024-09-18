@@ -6,12 +6,9 @@ use std::net::SocketAddr;
 mod db;
 mod schema;
 
-use crate::db::models::{NewPost, Post};
 use axum::routing::post;
-use axum::Json;
 use axum::{http::Method, response::IntoResponse, routing::get, Router};
 use db::db::establish_connection;
-use diesel::sql_types::Json;
 use tower_http::cors::{Any, CorsLayer};
 
 struct Port(u16);
@@ -38,8 +35,7 @@ async fn app(port: u16) {
         .route("/", get(root))
         .route("/login", post(login))
         .route("/posts", get(posts))
-        .route("/createposts", 
-            post(createpost))
+        .route("/createposts", post(login))
         .layer(CorsLayer::new().allow_origin(Any).allow_methods(vec![
             Method::POST,
             Method::GET,
@@ -64,7 +60,7 @@ async fn login() -> impl IntoResponse {
 async fn posts() -> impl IntoResponse {
     todo!()
 }
-
+/*
 async fn createpost(Json(payload): Json<NewPost<'_>>) -> impl IntoResponse {
     let post = Post {
         id: 0,
@@ -74,3 +70,4 @@ async fn createpost(Json(payload): Json<NewPost<'_>>) -> impl IntoResponse {
     };
     Json(post)
 }
+*/

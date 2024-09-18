@@ -1,17 +1,34 @@
-<h1>
-  main
-</h1>
-
 <script>
-import {testconn} from '$lib/testconn';
+import { get_port, testconn } from "$lib/testconn";
 
-export async function get() {
+    /**
+     * @type {Number}
+     */
+let port;
+
+get_port().then(value => {
+  port = value;
+});
+
+/**
+ * @type {any}
+ */
+let result = '';
+
+
+async function testConnection() {
   try {
     const response = await testconn();
-    console.log(response)
-  } catch (error) {
-    console.error(error)
+    // @ts-ignore
+    result = await response;
+  } catch (err) {
+    // @ts-ignore
+    result = err.message;
   }
 }
-get()
 </script>
+
+<p>{ port }</p>
+<button on:click={testConnection}>Test Connection</button>
+
+<p>Connection successful: {result}</p>

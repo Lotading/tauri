@@ -11,7 +11,10 @@
   },
   "tauri": {
     "allowlist": {
-      "all": false
+      "http": {
+        "all": true,
+        "request": true
+      }
     },
     "updater": {
       "active": true,
@@ -59,9 +62,6 @@
     },
     "security": {
       "csp": null
-    },
-    "updater": {
-      "active": false 
     },
     "windows": [
       {
